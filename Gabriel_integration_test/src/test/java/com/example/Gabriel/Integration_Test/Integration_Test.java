@@ -7,9 +7,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Date;
 
+import org.springframework.http.HttpStatus;
+
 import com.example.Gabriel.dto.DeliveryDTO;
+import com.example.Gabriel.dto.NewDeliveryDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +26,13 @@ public class Integration_Test {
 	
 	@Test
 	public void testCreateDelivery() {
-		Date date = new Date();
-		DeliveryDTO delivery = new DeliveryDTO(1, 2, date, "1", "1");
+		NewDeliveryDTO delivery = new NewDeliveryDTO(1, 2, new Date(), "1", "1");
+		Response resp = RestAssured
+				.given()
+				.contentType(ContentType.JSON)
+				.body(delivery)
+				.post(deliveryURL);
+		assertEquals(HttpStatus.CREATED.value(), resp.getStatusCode());
 	}
 
 }
