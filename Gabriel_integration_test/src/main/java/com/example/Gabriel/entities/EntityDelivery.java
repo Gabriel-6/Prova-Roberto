@@ -21,13 +21,12 @@ import lombok.ToString;
 @Getter @Setter
 @ToString
 public class EntityDelivery implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long OrderCode;
-	private long CpfReceiver;
-	private Date DeliveryDate;
-	private String Cep;
-	private String Status;
-	private boolean active;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long orderCode;
+    private long cpfReceiver;
+    private Date deliveryDate;
+    private String cep;
+    private String status;
+    private boolean active;
 }

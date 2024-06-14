@@ -11,9 +11,10 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class DeliveryDTO {
-	private long OrderCode;
-	private long CpfReceiver;
-	private Date DeliveryDate;
-	private String Cep;
-	private String Status;
+    private long orderCode;
+    private long cpfReceiver;
+    private Date deliveryDate;
+    private String cep;
+    private String status;
+    private boolean active;
 }
